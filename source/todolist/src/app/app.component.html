@@ -1,0 +1,41 @@
+<div class="main-container">
+  <div>
+    <h2 style="margin: 10px;"> TODO LIST</h2>
+    <!-- form module is used-->
+    <form  #temp="ngForm" (ngSubmit)="todoAddition(temp)"> 
+  <div class="form-container">
+    <input  type="text" name="name" placeholder="Todo.." ngModel>
+      <input style=" border-radius: 50%; background-color: green; color: white;" type="submit" value="add">
+  </div>
+    </form>
+
+  <!-- UNORDERED LIST -->
+    <ul class="unordered-list">
+      <!-- for loop-->
+      <li class="li-container" *ngFor="let x of todos" >
+        <!-- if condition-->
+        <div class="unordered-list-container" *ngIf="!this.x.completed" >
+          <div><h3 style="color: blue;" >{{ this.x.name }}</h3></div>
+          <div class="button-main-container">
+            <button class="button-container" style="background-color: #4CAF50; color: white;" (click)="addition(this.x.id)"> IF DONE</button>
+            <button class="button-container"  style="background-color: #f44336; color: white;" (click)="remove(this.x.id)"> REMOVE</button>
+          </div>
+        </div>
+      </li>
+
+  <!-- TODO DONE-->
+  <h3 style="margin: 10px;"> LIST done</h3>
+  <!-- for loop -->
+     
+  <li class="li-container" *ngFor="let x of todos" >
+    <!-- if condition-->
+    <div class="unordered-list-container" *ngIf="this.x.completed" >
+      <div><h3 style="color: blue;" >{{ this.x.name }}</h3></div>
+      <div class="button-main-container">
+        <button class="button-container"  style="background-color: #f44336; color: white;" (click)="remove(this.x.id)"> REMOVE</button>
+      </div>
+    </div>
+  </li>
+    </ul>
+  </div>
+  </div>
